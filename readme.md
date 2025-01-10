@@ -1,6 +1,12 @@
 ## Acknowledgement
 Forked from [iihciyekub/MUST-Thesis](https://github.com/iihciyekub/MUST-Thesis)
 
+## ‼️重要‼️
+你当前阅读的是：研究生院通用版(执行标准: 2022年10月修订版)
+
+我们还为你准备了：
+* [人文艺术学院模板(执行标准: 2018年11月修订版)](https://github.com/MUST-LLM-Group/MUST-Thesis/tree/fa-2018-11)
+
 ## 说明
 由于花费了不少时间分析英文版摘要页面缺失的罗马页码，考虑到本项目对于许多同学有重要价值，决定长期维护一个能够让全校所有学院同学开箱即用的版本。
 
