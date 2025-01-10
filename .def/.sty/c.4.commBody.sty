@@ -42,6 +42,9 @@
     \ifwriteqEn
         % 清空页眉
         \fancyhead{}
+        % 页脚页码
+        \fancyfoot[C]{\fontsize{10pt}{10 pt}\selectfont\thepage}
+        \raggedbottom
         \enfz
     \else
         % resetCEfancyhf 命令在文件 < ./.def/b.2.setLayout.sty >
