@@ -1,0 +1,64 @@
+% Oct 2, 2024 at 15:18:38 修正英文版摘要目录不显示目录问题
+% 重定義引用段落的環境 
+\let\oldquote\quote
+\let\endoldquote\endquote
+\renewenvironment{quote}
+{\oldquote\vspace{-1em}}
+{\endoldquote}
+
+
+% 添加校徽 logo 宏命令设置
+\RequirePackage{eso-pic}
+\newcommand\addBackgroundPic[1]{%
+\AddToShipoutPicture{
+    \put(0,0){%
+        \parbox[b][\paperheight]{\paperwidth}{%
+            \vfill
+            % 页面奇偶页边距对称的情况下
+            \centering
+            \ifprint
+                \ifodd\numexpr\value{page}+1\relax
+                   \hspace{-1.5cm}
+                \else
+                    \hspace{1.5cm}
+                \fi
+            \else
+                \hspace{1.5cm}
+            \fi
+            \includegraphics[width=0.86\textwidth,keepaspectratio]{#1}%
+            \vfill
+            }
+        }
+    }
+}
+ 
+
+
+\AtBeginDocument{
+    \RequirePackage{ragged2e} % 引入宏包
+    \justifying % 设定为两端对齐
+    % 設置表格行高
+    \renewcommand{\arraystretch}{1.2}
+    \ifwriteqEn
+        % 清空页眉
+        \fancyhead{}
+        \enfz
+    \else
+        % resetCEfancyhf 命令在文件 < ./.def/b.2.setLayout.sty >
+        \resetCEfancyhf
+        \cnfz
+    \fi
+    % 将表格的行高缩小为原始高度的一半。
+    % \renewcommand\arraystretch{0.5}
+    % 插入 学校校徽 logo
+    \ifwm\addBackgroundPic{\resourcePath mustlogo.jpg}\fi
+    % 插入扉页
+    \iftp\addtitlepage\fi
+    % 插入声明原创页
+    \ifdp\adddeclarepage\fi
+    % 如果是英文版本时, 为摘要添加页页眉
+    \ifwriteqEn
+        % \pagestyle{fancy}
+        \fancyhead[R]{\fontsize{10pt}{10 pt}\selectfont Abstract}
+    \fi
+}

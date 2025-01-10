@@ -1,0 +1,59 @@
+\iffalse
+- 设置纸张页面大小
+- 设置页眉页脚
+- 最后更新: Dec 2, 2024 at 09:56:29
+\fi
+
+% 
+\RequirePackage {geometry}
+\def\ileft  {3.8}
+\def\iright{2.5}
+\geometry{
+    % showframe,
+    papersize={21cm,29.7cm},
+    left= \ileft cm, 
+    right= \iright cm, 
+    top= 2.5 cm, 
+    bottom= 2.5 cm,
+    headheight = 0.6 cm,
+    headsep = 1 em,
+    footnotesep = 2 em,
+    footskip = 25 pt
+}
+
+% 设置页眉
+\RequirePackage{fancyhdr}
+\ifwriteqEn
+    % 去除英文版的页眉线 
+    \renewcommand{\headrulewidth}{0 pt}
+\else
+    % 添加页眉线 
+    \renewcommand{\headrulewidth}{0.4 pt}
+\fi
+\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+
+% 全局设置页眉页脚的样式
+\newcommand{\resetCEfancyhf}{
+    \ifwriteqEn
+        \fancyhead[L]{}
+        \fancyhead[R]{\fontsize{10pt}{10 pt}\selectfont Chapter~\thechapter~\leftmark}
+    \else
+        \fancyhead[L]{\fontsize{10pt}{10 pt}\selectfont\cnShortTitle}
+        % \fancyhead[L]{}
+        \fancyhead[R]{\fontsize{10pt}{10 pt}\selectfont\leftmark}
+    \fi
+    % 页脚页码
+    \fancyfoot[C]{\fontsize{10pt}{10 pt}\selectfont\thepage}
+    \raggedbottom
+}
+
+% 局部调整文本块的左右边距  \begin{adjustwidth}{2cm}{2cm} **** \end{adjustwidth}
+\RequirePackage{changepage}
+
+% 显示页面布局：在你希望显示页面布局的位置，使用 \layout 命令即可。例如，在文档的某个位置插入 \layout 命令，它将生成一个显示页面布局的图形。
+\RequirePackage[silent]{layout}
+\RequirePackage{graphicx}

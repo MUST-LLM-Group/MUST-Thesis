@@ -1,0 +1,717 @@
+% !TeX encoding = UTF-8
+% !TeX program = xelatex
+\iffalse
+########################
+Project Name:
+    The LaTeX cn/en template for MUST Thesis 
+Github:
+    https://github.com/iihciyekub/MUST-Thesis
+User's Guide:
+    https://iihciyekub.github.io/must-thesis-manual
+Overleaf texAide (Chrome Extension):
+    https://chrome.google.com/webstore/detail/overleaf-s2tbib2bbl/icekiliecbhnockmfkehoebbkmhmapmo?hl=zh-CN
+
+author: Yongjian.Li  (LastUpdate: Dec 2, 2024 at 11:00:47)
+########################
+\fi
+
+\documentclass[
+    writingLanguage=chinese, % 中文模板
+    addPageTitle=on,  % on/off 添加扉頁
+    addDeclaration=on, % on/off 添加原創聲明
+    addMUSTlog=off, % on/off 添加校徽水印
+    addFigTOC=on, % on/off 添加圖目錄  
+    addTabTOC=on, % on/off 添加表目錄
+    refIndent=off, % on/off 修改參考文獻條目縮進
+    printMod=off, % on/off 設置奇偶數邊距對稱紙質打印模式
+]{.def/must}
+   
+% 論文基本信息,必填不能刪除
+\def\shool              {Macau University of Science and Technology}
+\def\cnTitle            {我的畢業論文中文題目}
+\def\cnShortTitle       {\cnTitle}% 頁眉顯示的中文論文短題目
+\def\enTitle            {English title of my graduation thesis}
+\def\enShortTitle       {\enTitle}% 頁眉顯示的英文論文短題目
+\def\Name               {李永建}% 名稱
+\def\StudentNo          {1809853G-BM30-0053}% 學號
+\def\Faculty 	        {商學院}% 所在學院
+\def\Program 	        {管理學博士學位}% 學位名稱
+\def\Major              {商業量化}% 專業名稱
+\def\Supervisor	        {李新 副教授}% 指導老師
+\def\DateofWriting		{\datea\today}% 設置論文寫作完成時間
+\def\DateofDeclaration	{2023/11/20}% 設置論文原創聲明時間
+\def\DateofSignature	{2023/11/30}% 設置簽署論文原創聲明的時間
+\def\PublicAfterYears   {5}% 設置論文幾年後公開
+\def\mySign             {Fig/mySign.png}%支持帶透明通道的png照片(推薦)
+\def\supervisorSign     {Fig/supervisorSign.png}%支持帶透明通道的png照片
+
+
+
+
+
+\begin{document}
+\begin{abstract@cn}{澳門科技大學研究生畢業論文模板}
+本模板基於\LaTeX{}文檔語言製作，嚴格符合澳門科技大學（以下簡稱“MUST”）的排版參考標準，涵蓋扉頁、原創性聲明、中英文摘要、目錄、圖表目錄、校徽水印、個人簡歷及參考文獻等內容。
+
+\noindent 本排版設計嚴格遵守MUST的官方規範文件，包括：
+\begin{enumerate}[label=\arabic*).]
+\item 研究生論文寫作指導（2022年10月修訂版）
+\item 碩士與博士論文參考文獻補充説明\_2022（商學院）
+\item 扉頁格式要求
+\item 學位論文原創性聲明要求
+\item 校徽水印規範
+\end{enumerate}
+請注意，除商學院外的其他學院可能需要補充或修改部分排版細節。所有模板文件均存於.def文件夾內，且已添加詳盡的中文註釋，用户可根據具體排版要求進行調整。如需技術支持，請訪問\faGithub：\url{https://github.com/iihciyekub/MUST-Thesis/issues} 提交問題以獲得進一步的幫助。
+
+\noindent 最後更新時間：\datea\today
+
+\end{abstract@cn}
+
+\begin{abstract@en}{Macau University of Science and Technology Graduate Thesis Template}
+This template is created based on the \LaTeX{} documentation language and strictly complies with the typesetting standards provided by Macau University of Science and Technology (hereinafter referred to as 'MUST'), covering the title page, declaration of originality, abstracts in both Chinese and English, table of contents, list of figures, university emblem watermark, personal resume, and references.
+
+\noindent The typesetting design strictly follows MUST's official specification documents, including:
+\begin{enumerate}[label=\arabic*).]
+\item Graduate Thesis Writing Guide (Revised October 2022)
+\item Supplemental Instructions for References in Master's and Doctoral Theses 2022 (Business School)
+\item Title Page Format Requirements
+\item Degree Thesis Originality Declaration Requirements
+\item University Emblem Watermark Standards
+\end{enumerate}
+Please note that faculties other than the Business School may need to supplement or modify some typesetting details. All template files are stored in the .def folder, with extensive Chinese comments added, allowing users to adjust according to specific typesetting requirements. For technical support, please visit \faGithub: \url{https://github.com/iihciyekub/MUST-Thesis/issues} to submit issues for further assistance.
+
+\noindent Last updated: \dateb\today
+
+\end{abstract@en}
+
+% 添加目錄 
+\addtableofcontents
+
+
+\chapter{使用説明}
+本项目是开源项目，专门解决澳门科技大学研究生毕业论文全文格式排版问题，提供高效解决方案。
+
+项目基于 The LaTeX Project Public License (LPPL Version 1.3c, 2008-05-04) 开源协议，保护用户和开发者权利，支持软件自由与开放式改进。 \faCopyright iihciyekub 2024
+
+如使用本项目撰写论文，请选择 new\_cn.tex 或 new\_en.tex 作为主tex文件。您可在 content 文件夹创建更多tex文件，便于管理不同章节，结构化您的项目。
+
+\chapter{項目 / 輔助工具 / 文檔}
+\subsubsection{項目}
+
+\noindent \faLeaf\; 推薦使用 overleaf 在線版本 (持續更新) 
+\begin{itemize}
+    \item \url{https://www.overleaf.com/read/mjzpcxztzqzv#3b0b73}
+\end{itemize}
+
+\noindent \faGithub\;  GitHub 項目源文件 
+\begin{itemize}
+    \item \url{https://github.com/iihciyekub/MUST-Thesis}
+\end{itemize}
+
+
+\subsubsection{輔助工具}
+
+\noindent \faChrome\; overleaf texAide (chrome Extensions) 
+
+提供簡繁體轉換/澳科大參考文獻格式轉換/ \LaTeX{} 宏命令查詢 
+\begin{itemize}
+    \item \url{https://chromewebstore.google.com/detail/overleaf-texaide/icekiliecbhnockmfkehoebbkmhmapmo?hl=zh-CN}
+\end{itemize}
+
+
+
+\subsubsection{文檔}
+\noindent \faHistory\; 設計文檔更新歷史 
+\begin{itemize}
+    \item \url{https://github.com/iihciyekub/MUST-Thesis/blob/master/readme.md}
+\end{itemize}
+
+\noindent \faEdit\; 在線幫助文檔 
+\begin{itemize}
+    \item \url{https://iihciyekub.github.io/must-thesis-manual/}
+\end{itemize}
+
+
+
+
+\chapter{論文排版參數概覽}
+\section{論文排版基本要求}
+\subsection{排版要求規範文件}
+\begin{table}[H]
+\Large
+\centering
+\caption{MUST 校方排版要求規範文件,2024}
+\begin{tabularx}{\textwidth}{lX}
+\toprule
+序 & 學校排版要求文件 (點擊查看) \\
+\midrule
+1& \faHandORight\; \href{https://www.must.edu.mo/images/GSO/files/sgsdocument/GS002.pdf}{研究生論文寫作指導 (2022年10月修訂)}\\
+2& \faHandORight\; \href{https://www.must.edu.mo/images/GSO/files/sgsdocument/GS004.pdf}{扉頁格式}\\
+3& \faHandORight\; \href{https://www.must.edu.mo/images/GSO/files/S023學位論文原創性聲明BI.pdf}{學位論文原創性聲明}\\
+4& \faHandORight\; \href{http://www.must.edu.mo/images/SGS/files/APA_7th_0710.pdf}{研究生論文格式參考資料 (APA)}\\
+5& \faHandORight\; \href{https://www.must.edu.mo/images/MSB/files/碩士與博士論文參考文獻格式補充説明_2022.pdf}{碩士與博士論文參考文獻格式補充説明\_2022 (商學院)}\\
+6& \faHandORight\; \href{https://lib.must.edu.mo/sites/default/files/must-logo.jpg}{校徽水印}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\addinfo
+\subsection{版面設定}
+\begin{table}[H]
+    \Large
+    \centering
+    \caption{讀取csv生成的表格}
+    \begin{tabular}{
+        >{\raggedright\arraybackslash}p{2.1cm}
+        >{\raggedright\arraybackslash}p{11.6cm}
+    }  % 第二列寬度調整為12cm
+    \toprule
+    % 表頭（根據你的CSV文件內容自定義）
+    域 & 尺寸 \\ \midrule
+    % 讀取CSV文件內容
+    \csvreader[head to column names]{Tab/reftab.csv}{}
+    { \csvcoli & \csvcolii \\ }\\[-1.5em]
+    \bottomrule
+    \end{tabular}
+\end{table}
+
+\addinfo
+\subsection{論文排列順序}
+扉頁、中文摘要、英文摘要、目錄、緒論、論證章、結論和建議、參考文獻、附錄
+(圖表或文字資料) 、致謝、個人簡歷、及本人發表的論文和著作 (Publication)。
+
+
+
+
+
+
+\chapter{研究生學位論文寫作指導}
+\noindent 以下內容依據\href{https://www.must.edu.mo/images/GSO/files/sgsdocument/GS002.pdf}{\textbf{ 研究生論文寫作指導 (2022年10月修訂) }}，進行復寫。
+
+\subsection{論文寫作依據}
+修讀研究生課程的學生必須在修讀限期內親自獨立完成一篇與專業相關的論文，並通過評審及答辯。
+\subsection{論文寫作程序}
+
+\noindent \textbf{2.1 前提：}學生在完成一定的基礎科目後，可以開始進行論文的籌備工作。
+
+\noindent \textbf{2.2 選題：}學生先將擬定的論文主題主動與相應的指導老師聯絡，可隨時向指導老師詢
+問有關論文的一切問題，但正式登記論文題目的工作必須在指定期限內進
+行。假如學生有選題的困難應直接與指導老師討論研究。
+
+\noindent \textbf{2.3 申請：}當學生選定了論文題目，必須填寫澳門科技大學《論文題目申請表》，當選題
+被確認後，將給每位學生委派指導老師(學生亦可自行選擇導師，取得導師
+初步同意後，再經校方審批確認)，學生與導師都將會收到確認通知，論文
+寫作期限是從論文題目申請獲批准之日開始計算。
+ 論文題目申請經批核後，學生的論文題目、指導老師、論文寫作之開始及結
+束日期等詳情，將記錄於 COES 的論文頁面中，學生應自行登入 COES 中查
+看。
+
+\noindent \textbf{2.4 開題：}學生收到論文題目確認通知後的指定期限內，應先向委派的導師提交一份正
+式的開題報告，經過導師修改或提供參考意見後，學生才可正式開始論文的
+撰寫工作。
+
+\noindent \textbf{2.5 寫作：} 學生開始進入寫作階段，論文寫作期間應與委派的導師保持密切聯絡，以便
+論文的寫作順利進行，並保證質量。
+
+\noindent \textbf{2.6 評審：} 論文完成後，讓導師給予評審。學生必須先得到導師同意，才可提交論文。
+
+
+\subsection{論文基本要求}
+\subsubsection{論文主要部分}
+
+\begin{enumerate}
+    \item 摘要(中文、英文)
+    \item 目錄
+    \item 緒論
+    \item 論證章
+    \item 結論和建議
+    \item 引用資料
+    \item 參考文獻
+    \item 附錄 (圖表或文字材料)
+    \item 致謝
+    \item 個人簡歷
+\end{enumerate}
+
+\subsubsection{論文篇幅}
+參照各課程規定的要求。
+
+\subsection{論文寫作方法}
+\subsubsection{寫作內容}
+\noindent\faHandORight 摘要(中、英文) 與關鍵詞
+\begin{quote}
+摘要用以提示研究要探討的問題，是一篇具有獨立性和完整性的短文，是創新點的
+扼要表述。
+摘要寫作注意點：（1）避免將摘要寫成目錄式的內容介紹；（2）應力求簡潔，碩士
+論文摘要一般字數在 500～1000 字左右，博士論文摘要一般字數在 1000 ～1200
+字左右；（3）引導性和支持性的解釋語句應儘量少用（研究歷史回顧、文獻綜述、
+概念和名詞解釋，圖表和文獻索引）；（4）對論文的價值描述應用陳述方式，不要
+自誇；（5）要寫作者做出了什麼貢獻，研究工作的成果等。不要寫做了什麼：對基
+本理論做了探討，對某某問題做了系統性的研究。
+關鍵詞是供檢索用的主題詞條，應採用能覆蓋論文主要內容的通用詞。關鍵詞一般
+列 3 至 5 個，按關鍵詞出現的順序排列。
+\end{quote}
+
+
+\noindent\faHandORight 目錄
+\begin{quote}
+ 只需列出章、節即可。並標注頁碼。
+    
+\end{quote}
+
+\noindent\faHandORight 緒論
+\begin{quote}
+緒論的主要作用是：要告訴讀者本文的研究主題、論證本研究主題的價值所在、提
+出作者對研究問題的主觀答案。
+在此處的內容主要包括：（1）問題實際背景和問題界定（明確實用價值及對實際問
+題的專業術語表述）、（2）文獻綜述（理論價值定位）、（3）尚待解決問題（參照點
+選擇）、（4）假設提出（創新點提出）。通俗地講就是：研究動機、問題背景，選題
+原因和實際工作的關係、研究的重要性、研究目的、研究假設或待解決問題、名詞
+及定義以及研究範圍和限制等。
+
+\textbf{問題實際背景和問題界定：}選題的途徑：（1）從閲讀文獻著手；（2）從觀察現象著
+手。問題實際背景是用事實和現象來描述研究問題所在和其重要性。問題界定是指
+用專業述語來表述所要研究的問題。
+
+\textbf{文獻綜述：}是描述目前的研究現狀並作簡要分析。可以反映作者研究的功力和閲讀
+文獻的數量，是否找到研究問題的關鍵文獻及抓準文獻的重點。評述是否切中要
+害，是否有獨到見解。忌諱採用講義式將有關研究課題的理論和學派簡要地陳述一
+篇；忌諱輕率批評前人的不足和錯誤；忌諱含糊不清，採用的觀點和內容不清楚來
+源。綜述所引用的文獻應主要選自學術期刊或學術會議的文章。教科書或其他書籍
+只能佔小部分。報章雜誌的觀點不能作為論證的依據。
+
+\textbf{尚待研究問題和假設的提出：}以“尚待研究問題”來指出目前研究的不足之處，然後
+提出研究的假設。它表述論文的創新點所在。它是對實際問題觀察思考和閲覽前人
+研究工作的結果，又是論文隨後論證工作的起點和目標。主題先行即指著手寫作前
+先要構造好假設樹，然後收集資料和證據去驗證假設的真偽。假設的表述應落實到
+變數層次，賦予操作性的定義，形成操作假設。
+
+\end{quote}
+
+
+\noindent\faHandORight 論證章
+\begin{quote}
+\begin{enumerate}
+    \item 此部分是論文之主體，包括研究方法、設計以及資料之收集、處理，分析和討論。
+    \item  能清楚地描述取樣對象及方法，範圍和性質，運用合適的研究工具，詳細交待研究的實施程序，有初步性探討，以確定研究方法及程序之可行性，並提供詳盡的研究記錄和資料。
+    \item  正確、清楚及合理地將資料整理，交待和分析。客觀而無偏見地引述文獻於討論和分析中，明確列舉研究發現，且提示與先前相關研究發現之異同，明確區分事實與推論，而不致混淆。統計圖表的應用適當而且清楚。
+    \item 論文的主要觀點在此部分應得到充分的論證，包括理論和實踐 (即案例)兩個部分。
+    \item 論證章的資料收集：資料收集的描述應達到科學研究的清晰和重複性的要求；資料收集的描述包括研究主體，觀測方法和觀測過程。
+    \item 論證章的資料處理：描述統計、頻率分析、資料變換、X2 分析、圖表用來表示分析的結果等。
+    \item 論證章的資料分析：闡明所採用的資料分析方法，應用此方法分析計算的結果以及此結果的統計顯著性；統計顯著性才能驗證假設的真偽。忌諱花大量的篇幅去講述分析方法的原理和步驟，或論文只交代採用什麼方法和得出的結果，而資料分析過程無交代。
+  \item 論證章寫作要點：論證章的標題應反映出該章所論證的假設，才能顯現出研究的文獻；清楚研究物件和研究情境的定位，圍繞假設向深處、細處展開；知識性內容越少越好。忌諱按照教科書的思路，似乎在告訴讀者這方面的知識，而看不出研究的貢獻何在。
+\end{enumerate}
+
+\end{quote}
+
+\noindent\faHandORight 結論和建議
+\begin{quote}
+結論由研究結果引伸而來，相同的研究結果，不同的研究者可能引伸出不同的結
+果，作者可表達對此結果具有的理論和實際價值的看法。結論內容碩士一般在
+1000 至 2000 字之間，博士一般在 6000 至 10000 字之間，具體要求如下：
+
+\begin{enumerate}
+    \item 包括研究過程中所遇到或引發的種種現象思考、根據研究成果，提出解決問題的方向，以及未來值得研究的方向。
+    \item 結論要根據論文寫出總結性內容，觀點需具體明確，要有自己的創見。
+    \item 應直接回答研究問題。論據充分，層次清楚，觀點明確，要點分明，評論合理可信。提示進一步研究的問題，交待本研究是否具體可行，提示亟待改進之處，詳細地交待研究限制。建議應具參考價值。
+\end{enumerate}
+\end{quote}
+
+\noindent\faHandORight 引用資料
+\begin{quote}
+適當引用著作中的一些觀點和案例可以大大提高論文的可讀性和理論性。所有引
+用，無論直接引用還是間接引用，都必須標注。引用他人成果而不標注，視為抄襲。
+為體現論文的原創性，不可大段引用他人的資料。
+
+\end{quote}
+
+\noindent\faHandORight 參考文獻
+\begin{quote}
+表示研究者引用了哪些資料，提供特定主題的相關資料，方便讀者檢索。論文中引
+用的所有文獻都要在參考文獻清單中找到，而參考文獻中列出的每一項文獻論文中
+都有引用之處。參考文獻可以是書籍、學術期刊、學術會議論文、網路資料、學位
+論文，其中網路資料必須附上網站名稱、地址及日期。碩士參考文獻至少需要二十
+篇；博士可根據各專業而定。參考文獻應以該專題領域重要的學術期刊為主。
+
+\end{quote}
+
+
+
+\noindent\faHandORight 附錄 (圖表或文字材料)
+\begin{quote}
+此部分內容包括原始資料、資料分析和問卷等。
+
+\end{quote}
+
+
+
+\noindent\faHandORight 致謝
+\begin{quote}
+表達筆者對學校給予的學習機會；任課老師、論文指導老師所給予的指導以及家人、
+身邊的朋友對作者在學習中和論文期間給予的幫助和支援表示感謝。
+\end{quote}
+
+
+
+\noindent\faHandORight 個人簡歷
+\begin{quote}
+主要介紹個人教育背景、在讀期間學術成果，包括發表的學術論文、著作以及參加
+的學術項目(無須註明電話電郵等個人聯絡資料)。以便指導老師和答辯委員對作者有
+全面的瞭解。
+\end{quote}
+
+
+
+\subsubsection{格式規範}
+
+\noindent\faHandORight 論文排列順序
+\begin{quote}
+扉頁、中文摘要、英文摘要、目錄、緒論、論證章、結論和建議、參考文獻、附錄
+(圖表或文字資料) 、致謝、個人簡歷、及本人發表的論文和著作 (Publication)。
+
+\begin{enumerate}
+    \item 扉頁到目錄的頁碼格式為大寫羅馬字(I、II、III…)，其中扉頁部分不顯示頁碼。
+    \item 緒論及以後的頁碼格式為阿拉伯數字 (1，2，3，…)。
+    \item 頁碼置於頁尾處，對齊置中。
+\end{enumerate}
+
+\end{quote}
+
+
+\noindent\faHandORight 版面設定
+\begin{quote}
+A4 紙張，邊界為上(2.5cm)、下(2.5cm)、左(3.8cm)，右(2.5cm)，裝訂位置選擇左
+邊。(供參考)
+
+\end{quote}
+
+\noindent\faHandORight 字型
+\begin{quote}
+(英文) Times New Roman，(中文)繁體標楷體。
+\end{quote}
+
+\noindent\faHandORight 頁眉
+\begin{quote}
+除扉頁外，每頁都需加上頁眉，在版心上邊線隔一行加粗線，其上列印頁眉:
+每頁的左上角 - 論文的標題（若論文題目過長，則可免除）;每頁的右上角 - 本
+頁所在章節的名稱。
+\end{quote}
+
+\noindent\faHandORight 容部分 (中文摘要→論文著作)
+\begin{quote}
+\begin{enumerate}
+    \item 中文寫作之行距為 1.5 倍行高，英文寫作則為單行間距。
+    \item 論文正文內容的字型大小用 “14 標楷體” / Times New Roman 12。每章的大標題用“22 標楷體”、粗體 / Times New Roman 18 ，每節的小標題用“18 標楷體”、粗體 / Times New Roman 16。再下一層的小標題用“16 標楷體” 、斜體 / Times New Roman 14, Italic。頁眉用“10 標楷體”/ Times New Roman 10。
+\end{enumerate}
+\end{quote}
+
+
+
+ 
+
+
+
+\chapter{示例章節: 數學環境}
+\section{數學分析相關概念}
+好的，我們可以證明一個經典的數學命題：所有的素數之和是無窮大。這個證明不僅有趣，而且展示瞭解析數論的基本技巧。
+
+證明過程如下：
+
+我們首先回顧調和級數的一個性質。調和級數是形如 \( \sum_{n=1}^{\infty} \frac{1}{n} \) 的無窮級數，已知這是一個發散的級數。
+
+現在考慮素數的倒數之和 \( \sum_{p \text{ prime}} \frac{1}{p} \)。我們可以通過比較素數倒數之和和調和級數來分析這個級數。
+
+假設素數倒數之和收斂，即存在一個常數 \( S \)，使得 \( \sum_{p \text{ prime}} \frac{1}{p} = S \)。
+
+然而，我們可以用素數的性質來推導一個矛盾。根據素數定理，素數的分佈大致符合 \( \frac{x}{\log x} \) 的增長模式，其中 \( x \) 是自然數。根據這個分佈，我們可以估計素數倒數之和與調和級數的聯繫。具體地，素數倒數的部分和可以用積分來近似：
+
+\[
+\sum_{p \leq x} \frac{1}{p} \approx \int_2^x \frac{dt}{\log t}
+\]
+
+這個積分隨着 \( x \) 增長而發散。這意味着，儘管只考慮了素數的倒數，和仍然發散。
+
+由於我們的假設導致了一個矛盾（假設素數倒數之和收斂），因此必須得出素數倒數之和實際上是發散的，這意味着所有素數的倒數之和是無窮大。
+
+這個證明不僅用到了基本的數論知識，還融入了分析數學的方法，展示了素數這一看似簡單的數學對象背後的複雜性和深刻性。
+\begin{axiom}[皮亞諾公理 1]
+maseeselect
+\begin{enumerate}[label=\Alph*.]
+\item 零是一個自然數：$0$ 是一個自然數。
+\item 每個自然數都有一個後繼：對於每個自然數 $n$，存在一個唯一的自然數 $n+1$，稱為 $n$ 的後繼。
+\item 不同的自然數具有不同的後繼：如果 $n$ 和 $m$ 是自然數，並且 $n+1 = m+1$，那麼 $n = m$。
+\item 零不是任何自然數的後繼：對於任何自然數 $n$，$n+1$ 不等於 $0$。
+\item 歸納原理（數學歸納法）：如果一個集合 $S$ 滿足以下兩個條件，即 (a) $0$ 屬於 $S$，並且 (b) 對於每個自然數 $n$，如果 $n$ 屬於 $S$，則 $n+1$ 也屬於 $S$。那麼，$S$ 包含了所有的自然數。
+\end{enumerate}
+\end{axiom}
+
+\begin{theorem}[費馬定理]
+對於任意大於2的整數$n$，方程 $a^n + b^n = c^n$ 沒有整數解。
+\end{theorem}
+
+\begin{definition}
+    一個素數是隻能被1和自身整除的正整數。
+\end{definition}
+\begin{example}
+    設 $a$ 和 $b$ 是實數，那麼 $a+b=b+a$。
+\end{example}
+
+\begin{property}
+    任意實數 $x$ 的平方 $x^2$ 非負。
+\end{property}
+\begin{proposition}
+    對於任意實數 $x$，如果 $x > 0$，則 $x^2 > 0$。
+\end{proposition}
+\begin{lemma}
+這是第二個引理 lemma。
+\end{lemma}
+
+\begin{corollary}
+這是第二個推論 corollary。
+\end{corollary}
+
+\begin{remark}
+這是註解 remark。
+\end{remark}
+
+
+
+\begin{condition}
+這是條件 condition。
+\end{condition}
+
+ \begin{quote}
+     這是一段引用的段落
+ \end{quote}
+
+\begin{assumption}
+這是假設 assumption。
+\end{assumption}
+
+
+
+
+
+\chapter{示例章節: 圖環境}
+\section{TikZ 作圖}
+\begin{tikzpicture}
+\tikzset{
+erer/.style={circle,draw=black!86,line width=1.5pt,inner sep=2pt,fill=white,outer sep=1mm,font=\large},
+temd/.style={fill=white,inner sep =1pt,pos=0.75,sloped},
+every label/.style={font=\large},
+every pin/.style={font=\large},
+}
+
+\path [draw,->]
+node [circle,inner sep=2pt, label={-165:$t_{k+1}$},outer sep=1mm, fill=black ] (d) at(0,0) {}
+node [circle,inner sep=2pt,fill=black, label={90:$k+1$ 期顧客}, above = 20mm of d] (a) {}
+(a) edge[-{>[scale=1.5]},BrickRed]  node[fill=white,inner sep =2pt,pos=0.73]{$\mathbb{E}\lambda_{k+1}^d$} (d) 
+node [erer, label={-165:$t_k$},label={-90:$s(k)$},left = 12mm of d ,name=de 5] (d1) {$\lambda_{k}^d$}
+node [erer, label={-165:$t_{k-1}$},label={-90:$s(k-1)$},left = 20mm of d1 ] (d2) {$\lambda_{k-1}^d$}
+node [erer, label={-165:$t_{\cdots}$},left = 7mm of d2] (d3) {$\lambda_{\cdots}^d$}
+node [erer, label={-165:$t_2$},label={-90:$s(2)$},left = 7mm of d3 ] (d4) {$\lambda_2^d$}
+node [erer, label={-165:$t_1$},label={-90:$s(1)$},left = 7mm of d4 ] (d5) {$\lambda_1^d$}
+node [erer, label={-165:$t_0$},label={-90:軼事 $s(0)$},left = 7mm of d5] (e) {$\lambda_0^d$}
+(e) edge (d5)
+(d5) edge (d4)
+(d4) edge (d3)
+(d3) edge (d2)
+(d2) edge (d1)
+(d1) edge (d)
+;
+\node at(0,-1cm) {};
+\draw [dashdotdotted, <-,line width=0.83pt ,BrickRed] 
+(a) .. controls +(180:0.7cm) and +(90:5mm) .. (d1.north) 
+node[temd] {$\alpha$};
+
+\draw [dashdotdotted ,line width =0.8pt,BrickRed ] 
+(a) .. controls +(180:2cm) and +(90:1cm) .. (d2.north) 
+node[temd] {$\alpha(1-\alpha)$};
+
+\draw [dashdotdotted ,line width =0.8pt,BrickRed ]  
+(a) .. controls +(180:4cm) and +(90:1cm) .. (d3.north) 
+node[temd] {$\alpha(1-\alpha)^{\cdots}$};
+
+\draw [dashdotdotted ,line width =0.6pt,BrickRed ]  
+(a) .. controls +(180:6cm) and +(90:1cm) .. (d4.north) 
+node[temd] {$\alpha(1-\alpha)^{k-2}$};
+
+\draw [dashdotdotted ,line width =0.5pt,BrickRed ] 
+(a) .. controls +(180:8cm) and +(90:1cm) .. (d5.north) 
+node[temd] {$\alpha(1-\alpha)^{k-1}$};
+
+\draw [dashdotdotted ,line width =0.6pt ,BrickRed]  
+(a) .. controls +(180:11cm) and +(90:1cm) .. (e.north) 
+node[temd] {$(1-\alpha)^k$};
+
+\node at(0,-1.5cm) {};
+\end{tikzpicture}
+
+
+\section{組合圖}
+% \captionsetup[figure]{singlelinecheck=off,justification=raggedright}
+% \captionsetup[subfigure]{singlelinecheck=on}
+% \tikzstyle{every pin}=[fill=white,draw=black,font=\small,]
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+	  	\centering
+            \includegraphics[height=4cm]{example-image}
+		\caption{A subfigure}
+		\label{fig:sub1}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}{.49\textwidth}
+		\centering
+            \includegraphics[height=4cm]{example-image-a}
+		\caption{A subfigure}
+	  	\label{fig:sub2}
+	\end{subfigure}
+        \newline
+	\begin{subfigure}{.49\textwidth}
+		\centering
+            \includegraphics[height=4cm]{example-image-plain}
+		\caption{A subfigure}
+		\label{fig:sub3}
+	\end{subfigure}
+	\begin{subfigure}{.49\textwidth}
+		\centering
+            \includegraphics[height=4cm]{example-image-empty}
+		\caption{A subfigure}
+		\label{fig:sub4}
+	\end{subfigure}
+	\caption{A figure with two subfigures}
+	\label{fig:sub}
+\end{figure}
+上面示例中,子圖\ref{fig:sub1}、子圖\ref{fig:sub2}、子圖\ref{fig:sub3}、子圖\ref{fig:sub4}分別表示子圖
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\chapter{示例章節: 表環境}
+\section{三線表}
+\begin{table}[H]
+\caption{這是表的標題}
+\centering
+\begin{tabularx}{\textwidth}{XXX} % 表格寬度為網頁的一半
+\toprule
+內容1 & 內容2 & 內容3 \\
+\midrule
+行1 & 行1 & 行1\footnote{這是表格腳註的內容。} \\
+行2 & 行2 & 行2 \\
+\bottomrule
+\end{tabularx}
+\caption*{這是表格腳註}
+\end{table}
+
+
+\clearpage
+\begin{sidewaystable}[!htp]
+    \centering
+    \caption{ 文獻貢獻對比表}\label{jejk}
+    \begin{tabular}{p{7cm}m{3cm}cccll}
+       \toprule
+            \textbf{\tcell{r}{相關文獻}}
+                & \textbf{議題範疇}               & \textbf{\tcell{c}{topic 1}}           & \textbf{\tcell{c}{topic 2}          }     & \textbf{topic 3}    	& \textbf{topic 4}	&\textbf{發表時間}	 \\
+        \midrule
+            \citeauthor{Bawerk1922}; \citeauthor{Samuelson1937}; \citeauthor{Samuelson1937}
+                & \XSolidBrush                &  \Checkmark               & \Checkmark             &LQQL              & WP,RS
+                & \citeyear{Samuelson1937}; \citeyear{Samuelson1937}; \citeyear{jevons1879}\\
+                
+            \citeauthor{Samuelson1937}
+                & \XSolidBrush             &  \Checkmark            & \XSolidBrush             & UJJ             & RSBB             
+                & \citeyear{Samuelson1937}\\
+
+            \citeauthor{Bawerk1922}
+                & \XSolidBrush                &  \Checkmark            & \XSolidBrush             & \XSolidBrush             & APD             
+                & \citeyear{Samuelson1937}\\
+                
+            \citeauthor{Samuelson1937}             
+                & \XSolidBrush                & \Checkmark             &  \Checkmark          & ULL               & RS,BB,QD             
+                & \citeyear{Samuelson1937}\\
+                
+            \citeauthor{Choi2012}; \citeauthor{Goldfarb2009}; \citeauthor{Samuelson1937}
+                &  SXXX             & \XSolidBrush             & \XSolidBrush             & \XSolidBrush             & RS
+                &\citeyear{rae1905}; \citeyear{rae1905}; \citeyear{rae1905}\\
+                
+            \citeauthor{rae1905}             
+                &  LXXX            & \XSolidBrush             & \XSolidBrush             & \XSolidBrush             & CS,RS             
+                &\citeyear{rae1905}\\
+                
+            \citeauthor{rae1905}             
+                & GXXX             &  \Checkmark              &  \Checkmark         &KJJ              & IS             
+                &\citeyear{rae1905}\\
+                
+            \citeauthor{rae1905}              
+                & GXXX             & \Checkmark           & \XSolidBrush             & \XSolidBrush             & WP,RGMS,TPTF             
+                &\citeyear{Brown2013}\\
+                
+            \citeauthor{rae1905}
+                & NEVs SC             & \Checkmark              & \XSolidBrush             & \XSolidBrush             & RS                        
+                &\citeyear{Hossain2013}\\
+
+\citeauthor{rae1905} & blockchain  & \XSolidBrush   & \XSolidBrush   & \XSolidBrush   & XXX& \citeyear{rae1905}  \\ 
+本研究      & NEVs SC     & \Checkmark   & \Checkmark       & XXX   & RSBB\\
+
+        \bottomrule
+    \end{tabular}
+\end{sidewaystable}
+
+
+
+
+
+% 請確保bib 文件名稱為 ref.bib, 利用js文件處理後的bbl文件名稱為 ref.bbl
+\addreference{ref}
+
+
+\begin{appendix}
+證明過程
+\end{appendix}
+
+
+\begin{acknowpage}
+謝謝各位 
+省略
+\end{acknowpage}
+
+
+
+% 填寫個人簡歷
+\begin{addcvpage}
+% 設置入學時間
+\addedudate{2019 年 7 月}
+
+% 填寫教育經歷,注意內容以逗號作分隔,
+\addeduItem{2009.16-2012.13,澳門科技大學,商學院}
+\addeduItem{2009.16-2012.13,澳門科技大學,商學院}
+\addeduItem{2009.16-2012.13,澳門科技大學,商學院}
+
+
+%增加學術文章
+\addpaperItem{ 
+    \item 中國澳門氹仔島澳門科技大學 
+    \item 中國澳門氹仔島澳門科技大學,
+}
+
+% 增加項目
+\addprojectItem{
+    \item 無
+}
+\end{addcvpage}
+
+
+\end{document}

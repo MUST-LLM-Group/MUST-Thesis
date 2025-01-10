@@ -1,0 +1,81 @@
+\usepackage[colorlinks]{hyperref}
+\definecolor{bluecite}{HTML}{000000}
+% \newcommand{\@sethypcolor}[1]{
+    \hypersetup{
+        breaklinks  =   true,
+        urlcolor    =   black,
+        linkcolor   =   black,
+        citecolor   =   black,
+        anchorcolor =   black,
+    }
+% }
+\def\sethypcolor{\@sethypcolor{bluecite}}
+
+
+
+
+
+
+
+
+
+
+
+
+% 文献引用格式
+% \bibpunct{[开括号]}{[闭括号]}{[引用之间的分隔符]}{[作者和年份之间的分隔符]}{[注释和年份之间的分隔符]}{[后注]}
+\RequirePackage{natbib}
+\ifwriteqEn
+    \bibpunct{(}{)}{;}{,}{,}{a}
+\else
+    \bibpunct{(}{)}{；}{,}{,}{a}
+\fi
+
+
+
+
+% URL 宏包
+\RequirePackage{url}
+\urlstyle{same}
+% Line breaks in URL
+\def\UrlDigits{\do\1\do\2\do\3\do\4\do\5\do\6\do\7\do\8\do\9\do\0}
+% 英文断词设定
+\def\UrlBreaks{\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\[\do\\\do\]\do\^\do\_\do\`\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]\do\)\do\,\do\?\do\'\do+\do\=\do\#}
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\g@addto@macro{\UrlBreaks}{\UrlDigits}
+
+
+%%%% Widows & orphans
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+
+
+% 修改参考文献排版格式
+\makeatletter
+\renewenvironment{thebibliography}[1]{%
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{#1}}
+        \ifri
+            \advance\leftmargin -2em
+            \itemindent 0 pt
+        \else
+            \itemindent -2 em%  
+        \fi
+        \@openbib@code%
+        \usecounter{enumiv}%
+        \let\p@enumiv\@empty%
+        \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy%
+    \clubpenalty4000%
+    \@clubpenalty \clubpenalty%
+    \widowpenalty4000%%
+    \sfcode`\.\@m%
+}{%
+    \def\@noitemerr%
+    {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist%
+}
+\makeatother
+

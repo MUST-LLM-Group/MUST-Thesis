@@ -1,0 +1,37 @@
+% lastupdate: 2023-05-08
+\RequirePackage{parskip} 
+% 设置段落的间距
+\setlength{\parskip}{10pt}
+
+
+% 如果为英文写作环境,正文无缩进
+\ifwriteqEn
+    \setlength{\parindent}{0 em}
+\else
+    \setlength{\parindent}{2 em}
+\fi
+
+
+% [ref] (https://mirrors.concertpass.com/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf)
+\RequirePackage{enumitem}
+% 无序枚举全局样式设置
+\setitemize{
+    itemsep=-0em,
+    partopsep=0pt,
+    parsep=0pt,
+    topsep=-10pt,
+    leftmargin =1.5em
+}
+% 有序枚举全局样式设置,
+\setenumerate{
+    noitemsep,
+    nosep,
+    labelsep=0em,
+    widest=III,
+    align=left,
+    leftmargin=1.5em
+}
+
+
+
+

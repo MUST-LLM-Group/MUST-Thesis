@@ -1,0 +1,113 @@
+
+\tikzset{
+ur/.style={
+    inner sep = 0,
+    font = {\fontsize{12 pt}{16 pt}\selectfont},
+    text width = 3.5 cm,
+    name = cr1,
+    align = left, 
+    anchor = center, 
+    % draw
+    },
+ut/.style={
+    inner sep = 0,
+    font = {\fontsize{12 pt}{18 pt}\selectfont},
+    text width = 3.5 cm,
+    name = ct1,
+    align = left, 
+    },
+}
+
+
+
+\def\daa#1{
+    % 从宏包中 \RequirePackage{listofitems} 调用的命令
+    \readlist\mylist{#1}
+    \tikz{\path 
+            node[ut,text width = 3.5 cm,anchor = north west] at (0,0) {\mylist[1]}
+            node[ut,right =3.8 cm of ct1.north west, text width = 5.25 cm,anchor = north west]{\mylist[2]}
+            node[ut,right =5.7 cm of ct1.north west, text width = 3.8 cm,anchor = north west]{\mylist[3]};
+  }
+}
+
+
+% 添加入學時間
+\def\addedudate#1{
+    \node[ur,right = 4.13 cm of cr1]{#1};
+}
+% 添加教育背景信息,以逗號隔開
+\def\addeduItem#1{
+    \node [inner sep =0pt , below = 5 mm of g.south west ,name = g,anchor = north west] {\daa{#1}};
+}
+% 添加教育背景信息,以逗號隔開
+\def\addpaperItem#1{
+    \node [inner sep =0pt ,
+        text width = 13 cm,
+        font = {\fontsize{12 pt}{14 pt}\selectfont},
+        below = 5 mm of paper.south west ,
+        name = paper,
+        anchor = north west,
+        ] {\begin{itemize}[noitemsep,leftmargin= 1 em]#1\end{itemize}};
+}
+% 添加教育背景信息,以逗號隔開
+\def\addprojectItem#1{
+    \node [inner sep =0pt ,
+        text width = 13 cm,
+        font = {\fontsize{12 pt}{14 pt}\selectfont},
+        below = 5 mm of project.south west ,
+        name = paper,
+        anchor = north west,
+        ] {\begin{itemize}[noitemsep,leftmargin= 1 em]#1\end{itemize}};
+}
+
+ 
+% 定義文件目錄與位置
+\ifwriteqEn
+    \def\cvfilepath{\resourcePath ML04en.pdf}
+\else
+    \def\cvfilepath{\resourcePath ML04.pdf}
+\fi
+\newif\ifcvfile\cvfiletrue
+\def\opac{1}
+\IfFileExists{\cvfilepath}{\cvfiletrue}{\cvfilefalse\def\opac{0}}
+
+% # 定義命令
+\newenvironment{addcvpage}{
+    % \clearpage 
+    % \chapter*{}
+    \ifwriteqEn
+        \setenchapter{Personal Resume}
+        \pagestyle{fancy}
+        \fancyhead{}
+        \fancyhead[R]{\fontsize{10pt}{10 pt}\selectfont Personal Resume}
+    \else
+        \setcnchapter{個人簡歷}
+    \fi
+    % 定義左邊距
+    \def\l{3.8}
+    % 如果文檔選項參數print 為 true的話,
+    \ifprint
+        % 判斷為偶數頁的話 設置\l 變量值為2.5
+        \ifodd\numexpr\value{page}+1\relax
+           \def\l{2.5}
+        \fi
+    \fi
+    \begin{tikzpicture}[remember picture,overlay,opacity=\opac]
+        % 根據奇偶數不一樣自動捕捉的版心左上角座標點
+        \coordinate (o) at ($(current page.north west) + (\l,-5.5cm )$);
+        % 在此座標點插入簡歷
+        \node[inner sep = 0,anchor = north west] at (o) {\includegraphics[width=\textwidth]{\cvfilepath}};
+        % 自動填寫簡歷個人名稱
+        \node[ur,shift={(4.7 cm,-0.567 cm)} ] at(o) {\Name};
+        % 添加教育信息的基準座標點
+        \coordinate (e) at ($(o) + (1 cm, - 1.7 cm)$);
+        \node [anchor = north west,inner sep =0 pt , name = g,opacity=0] at (e) {\daa{ test, test, test}};
+        % 添加文獻發表的基準座標點
+        \coordinate (r) at ($(o) + (1.2 cm, - 7.627 cm)$);
+        \node [inner sep =0 pt , name = paper,opacity=0,anchor = north west] at (r) {test};
+        % 添加項目的基準座標點
+        \coordinate (t) at ($(o) + (1.2 cm, - 13.6 cm)$);
+        \node [anchor = north west,inner sep =0 pt , name = project,opacity=0] at (t) {test};
+}{
+    \end{tikzpicture}
+}

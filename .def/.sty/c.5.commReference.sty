@@ -1,0 +1,33 @@
+\newcommand{\addreference}[1]{
+    \clearpage
+    \ifwriteqEn
+        \setenchapter{Reference List}
+        \pagestyle{fancy}
+        \fancyhead{} 
+        \fancyhead[R]{\fontsize{10pt}{10 pt}\selectfont Reference List}
+    \else
+        \setcnchapter{參考文獻}
+    \fi
+    \addtolength{\itemsep}{4em}
+    
+    \IfFileExists{#1.bbl}{%
+        \input{#1.bbl}
+    }{%
+        \IfFileExists{#1.bib}{
+            \ifwriteqEn\else
+            {\small\noindent \textcolor{magenta}{\Large\faWarning} 
+             \textcolor{Emerald}{\faMailReply}  
+            \begin{itemize}
+            \item 如果看到這個提醒, 説明你的文獻排版並不符合澳科大参考文献格式要求。
+            \item 请通过下载安装 chrome 应用 overleaf texAide 进行格式转换，以解决此问题。
+            \item https://chromewebstore.google.com/detail/overleaf-texaide/icekiliecbhnockmfkehoebbkmhmapmo
+            \end{itemize}
+            }
+            \fi
+            \bibliographystyle{.def/.sty/apa5.bst}
+            \bibliography{#1.bib}
+        }{%
+            不存在 #1.bib 或 #1.bbl 文件.
+        }
+    }
+}

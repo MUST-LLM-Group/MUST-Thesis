@@ -1,0 +1,119 @@
+\ifwriteqEn
+    \RequirePackage{fmtcount}
+    % 转换英文的数值 one,two,...
+    \renewcommand{\thechapter}{\Numberstring{chapter}}
+    \renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\else
+    \RequirePackage{zhnumber}
+    \renewcommand{\thechapter}{\zhnum{chapter}}
+    \renewcommand{\thesection}{\zhnum{section}}
+    \renewcommand{\thesubsection}{\zhnum{subsection}}
+    \renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+\fi
+
+\RequirePackage{titlesec}
+% 设置标题深度,章,节,小节,小小节
+\setcounter{secnumdepth}{4}
+
+\ifwriteqEn
+    \titleformat{\chapter}[hang]
+        {\centering\bfseries\fontsize{22 pt}{1.8\baselineskip}\selectfont}
+        {Chapter \thechapter}
+        {1 em}
+        {\thispagestyle{fancy}}
+        {}
+    \titlespacing{\chapter}{0 pt}{12 pt}{12 pt}[0 pt]
+    % 2
+    \titleformat{\section}[hang]
+        {\centering\bfseries\fontsize{18 pt}{1.8\baselineskip}\selectfont}
+        {\thesection}
+        {0.5 em}
+        {}
+    \titlespacing{\section}{0 pt}{10 pt}{10 pt}[0 pt]
+    %3
+    \titleformat{\subsection}[hang]
+        {\fontsize{16 pt}{1.8\baselineskip}\selectfont}
+        {\thesubsection}
+        {0.5 em}
+        {}
+    \titlespacing{\subsection}{0 pt}{5 pt}{5 pt}[0 pt]
+    % 4
+    \titleformat{\subsubsection}[hang]
+        {\bfseries\fontsize{14pt}{1.8\baselineskip}\selectfont}
+        {\thesubsubsection}
+        {1 em}
+        {}
+    \titlespacing{\subsubsection}{0 pt}{5 pt}{5 pt}[0 pt]
+\else
+    \titleformat{\chapter}[hang]
+        {\centering\bfseries\fontsize{22 pt}{\baselineskip}\selectfont}
+        % {\centering\fontsize{22 pt}{\baselineskip}\selectfont}
+        {第\thechapter 章}
+        {22 pt}
+        {\thispagestyle{fancy}}
+        {}
+    \titlespacing{\chapter}{0 mm}{-0.4cm}{0.2 cm}[0mm]
+    % 2
+    \titleformat{\section}[hang]
+        {\bfseries\centering\fontsize{18 pt}{\baselineskip}\selectfont}
+        {第\thesection 節}
+        {10 pt}
+        {}
+    \titlespacing{\section}{0 pt}{5 pt}{5 pt}[0 pt]
+    %3
+    \titleformat{\subsection}[hang]
+        {\bfseries\fontsize{16 pt}{\baselineskip}\selectfont}
+        % {\fontsize{16 pt}{\baselineskip}\selectfont}
+        {\thesubsection 、}
+        {0 em}
+        {}
+    \titlespacing{\subsection}{0 pt}{5 pt}{5 pt}[0 pt]
+    % 4
+    \titleformat{\subsubsection}[hang]
+        {\bfseries\fontsize{14pt}{\baselineskip}\selectfont}
+        % {\fontsize{14pt}{\baselineskip}\selectfont}
+        {\thesubsubsection.}
+        {0.2 em}
+        {}
+    \titlespacing{\subsubsection}{0 pt}{5 pt}{5 pt}[0 pt]
+\fi
+
+
+
+\RequirePackage{caption}
+\RequirePackage{subcaption}
+\captionsetup{
+    aboveskip = 0.2 em, % 標題上下文距離
+    belowskip = 0.2 em,
+    labelsep  = quad, % 設置標題分割符
+    labelfont = bf,   % 設置標題樣式
+    font = large,
+}
+
+% 修改图表前缀
+\ifwriteqEn
+    \renewcommand{\figurename}{Fig}
+    \renewcommand{\tablename}{Table}
+    \renewcommand{\algorithmcfname}{Alg}
+\else
+    \renewcommand{\figurename}{圖}
+    \renewcommand{\tablename}{表}
+    \renewcommand{\algorithmcfname}{算法}
+\fi
+
+% 修改图表序号
+\renewcommand\thefigure{\arabic{chapter}-\arabic{figure}}
+\renewcommand\thetable{\arabic{chapter}-\arabic{table}}
+\renewcommand\thealgocf{\arabic{chapter}-\arabic{algocf}}
+\renewcommand\theequation{\arabic{chapter}.\arabic{equation}}
+
+
+
+
+
+
+
+
+
+
+

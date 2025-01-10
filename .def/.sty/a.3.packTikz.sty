@@ -1,0 +1,60 @@
+\RequirePackage{calc}
+\RequirePackage{pgfplots}
+\RequirePackage{tikz}
+\pgfplotsset{width=10.5 cm,compat=1.16}
+\usepgfplotslibrary{smithchart,polar}
+\RequirePackage{pgffor}
+\RequirePackage{pgfmath}
+\usetikzlibrary{
+    bending, 
+    intersections, 
+    calc,
+    math,
+    graphs,
+    arrows, 
+    arrows.meta, 
+    decorations.pathmorphing,
+    backgrounds,
+    positioning,
+    fit,petri,
+    shapes.geometric,
+    decorations.text,
+    decorations
+} 
+
+ 
+
+\NewDocumentCommand{\printxy}{O{i-1}}{
+    \pgfplotspointgetcoordinates{(#1)}
+    \scriptsize $(%
+    \pgfmathprintnumber[precision=3]{%
+                \pgfkeysvalueof{/data point/x}},
+    \pgfmathprintnumber[precision=3]{%
+                \pgfkeysvalueof{/data point/y}}
+    )$%
+}
+           
+\NewDocumentCommand{\fun}{ O{y-x}  O{0:24} O{0:5} O{name}}{
+\addplot +[no markers, raw gnuplot, empty line = jump, name path = #4] 
+    gnuplot {set xrange [#2];
+    set yrange [#3];
+    set contour base;
+    set cntrparam levels discrete 0.003;
+    unset surface;
+    set view map;
+    set isosamples 50;
+    set samples 50;
+    splot #1 ;
+};
+}
+
+
+
+% 打勾打X的符号
+\newcommand{\dingfamily}{\fontencoding{U}\fontfamily{ding}\selectfont}
+\newcommand{\@chooseSymbol}[1]{{\dingfamily\symbol{#1}}}
+\newcommand{\Checkmark}{\@chooseSymbol{'041}}
+\newcommand{\CheckmarkBold}{\@chooseSymbol{'042}}
+\newcommand{\XSolidBrush}{\@chooseSymbol{'045}}
+
+
