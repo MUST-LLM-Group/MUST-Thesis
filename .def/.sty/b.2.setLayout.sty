@@ -21,14 +21,20 @@
     footskip = 25 pt
 }
 
+
+% 参考：4. 頁眉： 除扉頁外，每頁都需加上頁眉，在版心上邊線隔一行加粗線，其上列印頁眉: 
+% 每頁的左上角 - 論文的標題（若論文題目過長，則可免除）;
+% 每頁的右上角 - 本 頁所在章節的名稱。
+% 由于研究生院版本未明确说明pt数值，而商学院版本提供了效果图，综合按照Word文档默认值0.5pt修改
+
 % 设置页眉
 \RequirePackage{fancyhdr}
 \ifwriteqEn
-    % 英文版的页眉线 
-    \renewcommand{\headrulewidth}{0.4 pt}
+    % 英文版的页眉线，且应该为粗线
+    \renewcommand{\headrulewidth}{0.5pt}
 \else
-    % 中文版的页眉线 
-    \renewcommand{\headrulewidth}{0.4 pt}
+    % 中文版的页眉线，且应该为粗线
+    \renewcommand{\headrulewidth}{0.5pt}
 \fi
 \renewcommand{\footrulewidth}{0pt}
 \pagestyle{fancy}

@@ -28,8 +28,8 @@
 
 %控制是否加水印
 \newif\ifwm\wmfalse
-\DeclareOption{addMUSTlog=on}{\wmtrue}
-\DeclareOption{addMUSTlog=off}{\wmfalse}
+\DeclareOption{addMUSTlogo=on}{\wmtrue}
+\DeclareOption{addMUSTlogo=off}{\wmfalse}
 
 % 设置参考文献是否顶格
 \newif\ifri\ritrue
